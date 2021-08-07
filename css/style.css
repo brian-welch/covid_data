@@ -1,0 +1,13 @@
+/**************    GLOBAL    **************/
+
+html {
+    font-size: 16px;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #333333;
+
+}
+
+p, span, div, caption {
+    /* letter-spacing: 1px;
+    line-height: 1.5em; */
+}
