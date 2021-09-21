@@ -3,7 +3,8 @@
 class CountryListParser {
 
     function __construct(){
-        echo "CountryListParser is Called";
+        $ts = date("H:i:s");
+        echo "CountryListParser __construct() is Called: $ts<br><br>";
 
         $this->file_array = file("https://www.worldometers.info/coronavirus/");
         $this->country_list_array = [];

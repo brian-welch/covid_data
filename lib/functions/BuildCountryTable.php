@@ -3,6 +3,9 @@
 class BuildCountryTable {
     
     function __construct($country_array, $ignore_list, $healthcare_rankings){
+        $ts = date("H:i:s");
+        echo "BuildCountryTable __construct() is Called: $ts<br><br>";
+
         $this->country_array = $country_array;
         $this->ignore_list = $ignore_list;
         $this->healthcare_rankings = $healthcare_rankings;

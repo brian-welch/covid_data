@@ -3,6 +3,9 @@
 class BuildDailyDataTable {
     
     function __construct($country_array) {
+        $ts = date("H:i:s");
+        echo "BuildDailyDataTable __construct() is Called: $ts<br><br>";
+
         $this->all_countries_data = [];
         $this->country_rows = [];
         $this->log_mssg = '';
@@ -28,32 +31,36 @@ class BuildDailyDataTable {
 
     }
 
-    private function parse_then_populate($details,$country_array) {
-        $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
+    // private function parse_then_populate($details,$country_array) {
+    //     $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
 
-        $truncate = "TRUNCATE TABLE DailyData";
+    //     $truncate = "TRUNCATE TABLE DailyData";
 
-        if ($conn->query($truncate) === FALSE) {
-            $this->log_mssg .= "\n¡Error! TRUNCATE TABLE DailyData: " . $conn->error . "\n['$country_id'] => [\n";
-            $this->log_mssg .= "- - - - - - - - - - - - - - -\n";
-        }
+    //     if ($conn->query($truncate) === FALSE) {
+    //         $this->log_mssg .= "\n¡Error! TRUNCATE TABLE DailyData: " . $conn->error . "\n['$country_id'] => [\n";
+    //         $this->log_mssg .= "- - - - - - - - - - - - - - -\n";
+    //     }
 
-        foreach($country_array as $country_name => $meta_array) {
-            $this->parse_country_data($details, $country_name, $meta_array);
-            $this->populate_daily_data_table($details, $this->all_countries_data);
-        }
-    }
+    //     foreach($country_array as $country_name => $meta_array) {
+    //         $this->parse_country_data($details, $country_name, $meta_array);
+    //         $this->populate_daily_data_table($details, $this->all_countries_data);
+    //     }
+    // }
 
     private function parse_country_data($details, $country_array) { //$country_array) {
-        echo "<style>body{font-family:sans-serif;font-size:10px;}</style>";
+        $ts = date("H:i:s");
+        echo "function parse_country_data() is Called: $ts<br><br>";
+        // print_r("Number of Countries to Parse: ");
+        // print_r(($country_array));//  - this checks out ok: all 185 countries arrive here and it's an array
+        // print_r("\n\n");
+
         $this->all_countries_data = [];
-        $default_max_execution_time = ini_get('max_execution_time');
-        set_time_limit(1200);
+        // $default_max_execution_time = ini_get('max_execution_time');
+        // set_time_limit(240);
 
         foreach ($country_array as $country_name => $meta_array) {
-            $all_lines = file("https://www.worldometers.info/coronavirus/country/{$meta_array['Slug']}/");
-
-            
+            //print_r("Start: $country_name . . . . ");
+            $all_lines = file("https://www.worldometers.info/coronavirus/country/{$meta_array['Slug']}/");          
             $date_line_replace_this = ["/null/", "/\[/", "/\]/", "/\{/", "/\},/", "/\",\"/", "/\"/", "/,/", "/Jan/", "/Feb/", "/Mar/", "/Apr/", "/May/", "/Jun/", "/Jul/", "/Aug/", "/Sep/", "/Oct/", "/Nov/", "/Dec/"];
             $date_line_with_this = [0, "", "", "", "", "§", "", "", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
             
@@ -155,7 +162,7 @@ class BuildDailyDataTable {
                             
             } // END While condition loop
 
-            echo "$country_name array key count: " . count(array_keys($country_data_arr)) . "<br>";
+            // echo "$country_name array key count: " . count(array_keys($country_data_arr)) . "<br>";
             
             if(!isset($country_data_arr["deaths_raw"])) {
                 // add zeros if no deaths are reported on site
@@ -177,10 +184,11 @@ class BuildDailyDataTable {
 
         } // End each countries foreach loop
         
-        set_time_limit($default_max_execution_time);
+        // set_time_limit($default_max_execution_time);
+        /// print_r("DONE! \n\n");
 
-        usleep(intval(substr(round(rand()*.01),0,7)));
-
+        // usleep(intval(substr(round(rand()*.01),0,7)));
+        sleep(1);
     } // Parser ends here
 
     private function populate_daily_data_table($details, $country_data) {
