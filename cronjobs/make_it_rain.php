@@ -14,7 +14,7 @@ spl_autoload_register('myLoad');
 include './healthcare_rankings.php';
 include './ignore_list.php';
 
-echo "<style>body{font-family:sans-serif;font-size:10px;}</style>";
+echo "<style>body{font-family:sans-serif;font-size:10px;line-height:12px;}</style>";
 echo "<h3 style='font-family:font-size:30px;font-family:sans-serif;'>Began: " . date("H:i:s") . "</h3>";
 
 $raw_country_array = new CountryListParser();
