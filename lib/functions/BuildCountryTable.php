@@ -117,6 +117,7 @@ class BuildCountryTable {
                 ";
                 
                 if ($conn->query($sql_02) === FALSE) {
+                    print_r("\n\n\nSQL BUG - SQL BUG - SQL BUG \n\n\n");
                     $this->log_mssg .= "\n¡Error! INSERT INTO 'Country' TABLE: " . $conn->error . "\n['$country_name'] => [\n";
                     foreach($meta_array as $key => $value){$this->log_mssg .= "\t['$key'] => $value ( ". gettype($value) . " )\n";}
                     $this->log_mssg .= "]\n";
