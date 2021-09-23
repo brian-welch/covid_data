@@ -13,7 +13,9 @@ spl_autoload_register('myLoad');
 // Import some given arrays
 include './healthcare_rankings.php';
 include './ignore_list.php';
-echo "<h6 style='font-family:font-size:30px;font-family:sans-serif;'>Began: " . date("H:i:s") . "</h6>";
+
+echo "<style>body{font-family:sans-serif;font-size:10px;line-height:12px;}</style>";
+echo "<h3 style='font-family:font-size:30px;font-family:sans-serif;'>Began: " . date("H:i:s") . "</h3>";
 
 $raw_country_array = new CountryListParser();
 
@@ -21,5 +23,5 @@ $country_table_builder = new BuildCountryTable($raw_country_array->get_country_a
 
 new BuildDailyDataTable($country_table_builder->get_country_array());
 
-echo "<h6 style='font-family:font-size:30px;font-family:sans-serif;'>Ended: " . date("H:i:s") . "</h6>";
+echo "<h3 style='font-family:font-size:30px;font-family:sans-serif;'>Ended: " . date("H:i:s") . "</h3>";
 

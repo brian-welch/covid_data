@@ -3,6 +3,9 @@
 class BuildCountryTable {
     
     function __construct($country_array, $ignore_list, $healthcare_rankings){
+        $ts = date("H:i:s");
+        echo "BuildCountryTable __construct() is Called: $ts<br><br>";
+
         $this->country_array = $country_array;
         $this->ignore_list = $ignore_list;
         $this->healthcare_rankings = $healthcare_rankings;
@@ -11,10 +14,10 @@ class BuildCountryTable {
         
         // GlobalVariables
         $this->db_details = [
-            'servername' => '127.0.0.1',
-            'username' => 'root',
+            'servername' => 'localhost',
+            'username' => 'u582415725_root',
             'password' => 'Kanuffen1234@',
-            'db_name' => 'CovidDataByCountry01',        
+            'db_name' => 'u582415725_QtVCm3hnAr',        
         ];
         $this->asymptomaticRate = 1.326;
 
@@ -114,6 +117,7 @@ class BuildCountryTable {
                 ";
                 
                 if ($conn->query($sql_02) === FALSE) {
+                    print_r("\n\n\nSQL BUG - SQL BUG - SQL BUG \n\n\n");
                     $this->log_mssg .= "\n¡Error! INSERT INTO 'Country' TABLE: " . $conn->error . "\n['$country_name'] => [\n";
                     foreach($meta_array as $key => $value){$this->log_mssg .= "\t['$key'] => $value ( ". gettype($value) . " )\n";}
                     $this->log_mssg .= "]\n";
