@@ -14,10 +14,10 @@ class BuildCountryTable {
         
         // GlobalVariables
         $this->db_details = [
-            'servername' => '127.0.0.1',
-            'username' => 'root',
+            'servername' => 'localhost',
+            'username' => 'u582415725_root',
             'password' => 'Kanuffen1234@',
-            'db_name' => 'CovidDataByCountry01',        
+            'db_name' => 'u582415725_QtVCm3hnAr',        
         ];
         $this->asymptomaticRate = 1.326;
 
