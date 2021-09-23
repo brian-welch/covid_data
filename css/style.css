@@ -82,6 +82,7 @@ div, p, span, a, li, td, ul, caption, figure, :before{
 }
 
 
+git remote add origin git@github.com:brian-welch/covid_data.git
 
 
 .chart-title{
