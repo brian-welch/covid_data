@@ -13,18 +13,18 @@ class BuildDailyDataTable {
         $this->log_mssg = '';
         
         // GLOBAL VARIABLES
-        // $this->db_details = [
-            // 'servername' => '127.0.0.1',
-            // 'username' => 'root',
-            // 'password' => 'Kanuffen1234@',
-            // 'db_name' => 'CovidDataByCountry01',        
-        // ];
         $this->db_details = [
-            'servername' => 'localhost',
-            'username' => 'u582415725_root',
+            'servername' => '127.0.0.1',
+            'username' => 'root',
             'password' => 'Kanuffen1234@',
-            'db_name' => 'u582415725_QtVCm3hnAr',        
+            'db_name' => 'CovidDataByCountry01',        
         ];
+        // $this->db_details = [
+        //     'servername' => 'localhost',
+        //     'username' => 'u582415725_root',
+        //     'password' => 'Kanuffen1234@',
+        //     'db_name' => 'u582415725_QtVCm3hnAr',        
+        // ];
         $this->asymptomaticRate = 1.326;
 
         $this->test_connection_to_db($this->db_details);

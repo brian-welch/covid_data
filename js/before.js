@@ -39,7 +39,7 @@ function loadGraphsFromURI() {
         $.ajax({
             method: "GET",
             data: window.location.search.substr(1),//search_query,
-            url: "../covid_data/lib/queries/QueryRouter.php",
+            url: "../lib/queries/QueryRouter.php",
         }).done(function( data ) {
             $("#renderArea").html("");
             data = JSON.parse(data);
@@ -118,7 +118,7 @@ async function graphDataAjax (query_string) {
     const results = await $.ajax({
         method: "GET",
         data: query_string,
-        url: "../covid_data/lib/queries/QueryRouter.php",
+        url: "../lib/queries/QueryRouter.php",
     });
     resultsJson = JSON.parse(results);
     for (const [key, value] of Object.entries(resultsJson)){
