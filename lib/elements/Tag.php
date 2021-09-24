@@ -13,7 +13,6 @@ class Tag {
         $this->attrs[$attr] ? $this->attrs[$attr] .= " {$value}" : $this->attrs[$attr] = "{$value}";
     }
 
-
     public function get_html() {
         $temp = "<{$this->tag_name}";
         if (($this->attrs))

@@ -4,18 +4,7 @@ class BuildDailyDataArchive {
     function __construct(){
         $this->dir = __DIR__;
         // DB Signin Info
-        $this->db_details = [
-            'servername' => '127.0.0.1',
-            'username' => 'root',
-            'password' => 'Kanuffen1234@',
-            'db_name' => 'CovidDataByCountry01',        
-        ];
-        // $this->db_details = [
-        //     'servername' => 'localhost',
-        //     'username' => 'u582415725_root',
-        //     'password' => 'Kanuffen1234@',
-        //     'db_name' => 'u582415725_QtVCm3hnAr',        
-        // ];
+        $this->db_details = GlobalVariables::$db_details_live;
 
         $this->archive_exising_daily_data($this->db_details);
         

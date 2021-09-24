@@ -16,13 +16,11 @@ $accordion_copy_01 = [
     "The Who's"=>"Not the Whos from Whoville and not the World Health [dis]Organization. Certain countries or other sovereign states have been elimnated from the data presented for 1 of 3 reasons: <ul><li>either a 'state' suffers from <stonrg><em>OUTSTANDING</em></strong> credibility issues</li><li>or a state was deemed 'secondary' and lacking merit</li><li>sourcing some key data points was contentious or unavailable</li></ul>Examples would include China and North Korea and Vatican City and numerous, smaller island nations. And while all data includes a level of uncertainty or error rate - and some politically mindless countries are more likely to be prone to have more eroneous reporting methods in order to push a political end - some sovereigns are more vile than others and ought not be considered to have any veracity whatsoever.<br><br>Not all excluded nation states should be seen as a slight - though some very much are. Particularly in the case of smaller island nations, some source data may have amalgamated island states into groups or clusters. So for this reason there are some missing countries - mea culpa.",
 ];
 
-
 function get_accordion_item_html($id, $index, $key, $value) {
     return  <<<TEMP
         <div class="accordion-item"><h2 class="accordion-header" id="heading{$index}"><button class="accordion-button element-contrasted collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{$index}" aria-expanded="false" aria-controls="collapse_{$index}" onclick="this.blur()" >{$key}</button></h2><div id="collapse_{$index}" class="accordion-collapse collapse" aria-labelledby="heading{$index}" data-bs-parent="#accordion_{$id}"><div class="accordion-body">{$value}</div></div></div>
 TEMP;
 }
-
 
 function build_accordion_block($accordion_array, $id, $column_classes) {
     $index = 1;
@@ -57,11 +55,9 @@ $preface_stmt_outer_obj = new Tag('div', $preface_stmt_inner_obj->get_html(),['c
 
 // ====================================
 
-
 echo "<div class='container'>";
 
 $page_name->echo_html();
-
 
 echo "<div class='row' id='renderArea'>";
 

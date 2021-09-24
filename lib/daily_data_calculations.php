@@ -1,6 +1,5 @@
 <?php
 
-
 function horizontal_axis_labels($all_labels_array) {
     $label_string = '';
 

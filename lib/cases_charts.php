@@ -3,7 +3,6 @@
 include 'country_covid_data.php';
 include 'daily_data_calculations.php';
 
-
 function render_all_country_cases($all_countries_data) {
 
     $prettyPopulation = function($population) {
@@ -26,7 +25,6 @@ function render_all_country_cases($all_countries_data) {
     $counter = 0;
     foreach ($all_countries_data as $country_name => $country_data) {
         ++$counter;
-
 
         $labels = horizontal_axis_labels($country_data['dates']);
         $data = vertical_axis_data($country_data['population'], $country_data['cases']);

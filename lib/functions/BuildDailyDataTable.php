@@ -13,7 +13,7 @@ class BuildDailyDataTable {
         $this->log_mssg = '';
         
         // GLOBAL VARIABLES
-        $this->db_details = GlobalVariables::$db_details_local;
+        $this->db_details = GlobalVariables::$db_details_live;
         $this->asymptomaticRate = GlobalVariables::$asymptomaticRate;
 
         
@@ -206,7 +206,6 @@ class BuildDailyDataTable {
 
         $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
 
-
         foreach($country_data as $country_id => $daily_data) {
             $datapoint_dates                = $daily_data['datapoint_dates'];
             $cases_raw                      = $daily_data['cases_raw'];
@@ -263,7 +262,6 @@ class BuildDailyDataTable {
 
     } // Populate table ends here
 
-
     private function create_daily_data_table($details){
         $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
 
@@ -302,7 +300,6 @@ class BuildDailyDataTable {
 
     }
     
-
 
     /*   PARSER SUB - FUNCTIONS   */
 

@@ -28,9 +28,7 @@ div, p, span, a, li, td, ul, caption, figure, :before{
     transition: all ease-in-out 300ms;
 }
 
-
 /**************    PREFACE    **************/
-
 
 
 .preface > .alert-primary {
@@ -60,7 +58,6 @@ div, p, span, a, li, td, ul, caption, figure, :before{
     margin-bottom: 15px;
 }
 
-
 .virus-hero {
     border-radius: 11px;
     box-shadow: inset 0 0 0 5px white;
@@ -72,7 +69,6 @@ div, p, span, a, li, td, ul, caption, figure, :before{
 
 
 
-
 /**************    GRAPH BLOCKS    **************/
 
 .chart-container {
@@ -80,7 +76,6 @@ div, p, span, a, li, td, ul, caption, figure, :before{
     position: relative;
     /* padding: 10px; */
 }
-
 
 
 
@@ -131,9 +126,6 @@ div, p, span, a, li, td, ul, caption, figure, :before{
 
 
 
-
-
-
 /**************    FOOTER    **************/
 
 footer {
@@ -141,27 +133,6 @@ footer {
     background-color: rgba(131, 8, 152, 0.5);
     padding: 30px 0 60px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -240,7 +211,6 @@ a:hover {
 button:focus, button:active {outline:0 !important;}
 
 
-
 blockquote {
     margin: 0;
 }
@@ -258,9 +228,6 @@ blockquote p::before {
 blockquote p::after {
     content: '\201D';
 }
-
-
-
 
 
 
@@ -352,14 +319,12 @@ blockquote p::after {
 }
 
 
-
 .main-menu > ul > li::before {
     content: "\2B91 ";
     margin-right: 10px;
     position: relative;
     top: -4px;
 }
-
 
 .main-menu > ul > li:hover {
     /* text-decoration: underline; */
@@ -380,16 +345,12 @@ blockquote p::after {
 
 
 
-
-
-
 /**************    FOOTER    **************/
 
 .accordion-button.element-contrasted:not(.collapsed)::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='rgba(207, 168, 214, 0.99)'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     transform: rotate(-180deg);
 }
-
 
 
 
@@ -431,15 +392,9 @@ blockquote p::after {
     outline: none !important;
 }
 
-
 .accordion-body {
     box-shadow: inset 0 3px 0 rgba(207, 168, 214, 0.99);
 }
-
-
-
-
-
 
 
 
@@ -465,7 +420,6 @@ blockquote p::after {
     line-height: 40px;
     padding: 0 20px;
 }
-
 
 .footer-menu-container {
     position: fixed;

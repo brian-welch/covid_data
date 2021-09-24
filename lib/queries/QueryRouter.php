@@ -1,6 +1,6 @@
 <?php
 function myLoad($class) {
-    $dir = __DIR__;
+    
     foreach(['queries', 'componants', 'elements', 'forms', 'base', 'functions'] as $prefix) {
         if(file_exists("{$_SERVER['DOCUMENT_ROOT']}/lib/$prefix/$class.php")) {
             include_once("{$_SERVER['DOCUMENT_ROOT']}/lib/$prefix/$class.php");
@@ -14,7 +14,7 @@ class Queryrouter {
 
     function __construct($get_array) {
 
-        $this->db_details = GlobalVariables::$db_details;
+        $this->db_details = GlobalVariables::$db_details_live;
         $this->category = $get_array['category'];
         $this->country_ids = $get_array['country_ids'];
         $this->count = $get_array['count'];
@@ -83,7 +83,6 @@ class Queryrouter {
 
         echo json_encode($grouped_rows); //  . "\n\n";
 
-
     }
 
     private function deathsPerMillion($country_ids, $count, $id_range_start) {
@@ -133,9 +132,7 @@ class Queryrouter {
 
         echo json_encode($grouped_rows);
 
-
     }
-
 
     private function mortalityRateByCases($country_ids, $count, $id_range_start) {
         $id_range_start = intval($id_range_start);
@@ -189,13 +186,7 @@ class Queryrouter {
 
         echo json_encode($grouped_rows);
 
-
     }
-
-
-
-
-
 
 
 
@@ -227,11 +218,6 @@ class Queryrouter {
         }
         return $all_rows;
     }
-
-
-
-
-
 
 
 
@@ -303,7 +289,6 @@ class Queryrouter {
     }
 
 }
-
 
 
 $get_array = [];

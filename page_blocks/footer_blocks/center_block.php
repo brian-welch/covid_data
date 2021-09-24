@@ -1,6 +1,5 @@
 <?php
 
-
 $center_block =  <<<CENTER_BLOCK
 
 <div class="col-xs-12 col-sm-6 col-lg-4">

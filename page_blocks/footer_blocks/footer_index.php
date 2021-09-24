@@ -4,7 +4,6 @@ include 'left_block.php';
 include 'center_block.php';
 include 'right_block.php';
 
-
 $footer = <<<FOOTER
 <div class="container">
     <div class="row">
@@ -34,7 +33,6 @@ $footer = <<<FOOTER
     </div>
     <script src="js/after.js?{$add_file_suffix}"></script>
     </body></html>
-
 
 FOOTER;
 
