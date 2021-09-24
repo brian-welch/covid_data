@@ -13,20 +13,10 @@ class BuildDailyDataTable {
         $this->log_mssg = '';
         
         // GLOBAL VARIABLES
-        $this->db_details = [
-            'servername' => '127.0.0.1',
-            'username' => 'root',
-            'password' => 'Kanuffen1234@',
-            'db_name' => 'CovidDataByCountry01',        
-        ];
-        // $this->db_details = [
-        //     'servername' => 'localhost',
-        //     'username' => 'u582415725_root',
-        //     'password' => 'Kanuffen1234@',
-        //     'db_name' => 'u582415725_QtVCm3hnAr',        
-        // ];
-        $this->asymptomaticRate = 1.326;
+        $this->db_details = GlobalVariables::$db_details_local;
+        $this->asymptomaticRate = GlobalVariables::$asymptomaticRate;
 
+        
         $this->test_connection_to_db($this->db_details);
         
         $this->create_daily_data_table($this->db_details);
