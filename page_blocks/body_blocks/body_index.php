@@ -2,8 +2,7 @@
 
 $page_name = new Tag('h1','DATA: Only as reliable as its source<hr>',['id'=>'page_name']);
 
-// $image_tag = new Image('https://www.nationaljewish.org/NJH/media/img/stock/Influenza-Viruses.jpg','Digital Representation of a Virus');
-$image_tag = new Image('../../images/virus_image_conceptual_02.jpg','Digital Representation of a Virus');
+$image_tag = new Image('images/virus_image_conceptual_02.jpg','Digital Representation of a Virus');
 
 $image_column = new Tag('div', '',['class'=>'col-lg-5 d-none d-lg-flex flex-column virus-hero']);
 
