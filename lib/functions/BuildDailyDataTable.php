@@ -13,7 +13,7 @@ class BuildDailyDataTable {
         $this->log_mssg = '';
         
         // GLOBAL VARIABLES
-        $this->db_details = GlobalVariables::$db_details_live;
+        $this->db_details = GlobalVariables::$db_details_local;
         $this->asymptomaticRate = GlobalVariables::$asymptomaticRate;
 
         

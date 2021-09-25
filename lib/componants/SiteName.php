@@ -4,7 +4,7 @@ class SiteName {
 
     private $site_title;
     
-    function __construct ($site_title_ext = "COVID Data Visualized: 1.0", $attrs = []) {
+    function __construct ($site_title_ext = "Graphing COVID: 1.0", $attrs = []) {
         $this->site_title = $site_title_ext;
         $this->attrs = $attrs;
         $this->set_attribute('class','site-name');

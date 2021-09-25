@@ -2,8 +2,8 @@
 function myLoad($class) {
     
     foreach(['queries', 'componants', 'elements', 'forms', 'base', 'functions'] as $prefix) {
-        if(file_exists("{$_SERVER['DOCUMENT_ROOT']}/lib/$prefix/$class.php")) {
-            include_once("{$_SERVER['DOCUMENT_ROOT']}/lib/$prefix/$class.php");
+        if(file_exists("{$_SERVER['DOCUMENT_ROOT']}/covid_data/lib/$prefix/$class.php")) {
+            include_once("{$_SERVER['DOCUMENT_ROOT']}/covid_data/lib/$prefix/$class.php");
         }
     }
 }
@@ -14,7 +14,7 @@ class Queryrouter {
 
     function __construct($get_array) {
 
-        $this->db_details = GlobalVariables::$db_details_live;
+        $this->db_details = GlobalVariables::$db_details_local;
         $this->category = $get_array['category'];
         $this->country_ids = $get_array['country_ids'];
         $this->count = $get_array['count'];

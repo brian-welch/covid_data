@@ -18,7 +18,7 @@ $accordion_copy_01 = [
 
 function get_accordion_item_html($id, $index, $key, $value) {
     return  <<<TEMP
-        <div class="accordion-item"><h2 class="accordion-header" id="heading{$index}"><button class="accordion-button element-contrasted collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{$index}" aria-expanded="false" aria-controls="collapse_{$index}" onclick="this.blur()" >{$key}</button></h2><div id="collapse_{$index}" class="accordion-collapse collapse" aria-labelledby="heading{$index}" data-bs-parent="#accordion_{$id}"><div class="accordion-body">{$value}</div></div></div>
+        <div class="accordion-item"><h2 class="accordion-header" id="heading{$index}"><a href='#accordianMarker'><button class="accordion-button element-contrasted collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{$index}" aria-expanded="false" aria-controls="collapse_{$index}" onclick="this.blur()" >{$key}</button></a></h2><div id="collapse_{$index}" class="accordion-collapse collapse" aria-labelledby="heading{$index}" data-bs-parent="#accordion_{$id}"><div class="accordion-body">{$value}</div></div></div>
 TEMP;
 }
 
@@ -48,6 +48,9 @@ $preface_stmt_inner = "
             <figcaption>—Peter Daszak, <strong>Dec 9, 2019</strong>, <cite>Preseident of Eco Health Aliance</cite><br><cite>FUNDED Gain of Function Research at the Wuhan Institute of Virology</cite></figcaption>
         </figure>
     </div></div>
+    <div id='accordianMarker'>
+        <hr>
+    </div>
 ";
 
 $preface_stmt_inner_obj = new Tag('div',$preface_stmt_inner, ['class'=>'col-xs-12 col-lg-7'], false);

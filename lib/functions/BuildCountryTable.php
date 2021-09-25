@@ -13,7 +13,7 @@ class BuildCountryTable {
         $this->log_mssg = '';
         
         // GlobalVariables
-        $this->db_details = GlobalVariables::$db_details_live;
+        $this->db_details = GlobalVariables::$db_details_local;
         $this->asymptomaticRate = GlobalVariables::$asymptomaticRate;
 
         $this->test_connection_to_db($this->db_details);
