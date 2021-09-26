@@ -4,7 +4,7 @@ class BuildDailyDataArchive {
     function __construct(){
         $this->dir = __DIR__;
         // DB Signin Info
-        $this->db_details = GlobalVariables::$db_details_local;
+        $this->db_details = GlobalVariables::$db_details;
 
         $this->archive_exising_daily_data($this->db_details);
         

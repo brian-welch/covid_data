@@ -14,7 +14,7 @@ class Queryrouter {
 
     function __construct($get_array) {
 
-        $this->db_details = GlobalVariables::$db_details_local;
+        $this->db_details = GlobalVariables::$db_details;
         $this->category = $get_array['category'];
         $this->country_ids = $get_array['country_ids'];
         $this->count = $get_array['count'];
@@ -31,7 +31,7 @@ class Queryrouter {
                 $this->mortalityRateByCases($this->country_ids,$this->count,$this->id_range_start);
                 break;
             default:
-                die(GlobalVariables::$bad_url_mssg);
+                die("Bug: Query Router > construct function");
           }
 
     }
@@ -54,7 +54,7 @@ class Queryrouter {
         $result_02 = $this->get_cases_adjusted_15day_per_million_results($where_02);
 
         if (count($result_01) === 0 || count($result_02) === 0){
-            die(GlobalVariables::$bad_url_mssg);
+            die("Bug: Query Router > construct function >  no result 01 or result 02");
         }
 
         foreach ($result_01 as $index => $arr) {
@@ -103,7 +103,7 @@ class Queryrouter {
         $result_02 = $this->get_deaths_15day_per_million_results($where_02);
 
         if (count($result_01) === 0 || count($result_02) === 0){
-            die(GlobalVariables::$bad_url_mssg);
+            die("Bug: Query Router > deths per million function > no fesult 01 & result 02");
         }
 
         foreach ($result_01 as $index => $arr) {
@@ -152,7 +152,7 @@ class Queryrouter {
         $result_02 = $this->get_mortalityRateByCases_results($where_02);
 
         if (count($result_01) === 0 || count($result_02) === 0){
-            die(GlobalVariables::$bad_url_mssg);
+            die("Bug: Query Router > mortality rate by cases function > no result 01 result 02");
         }
 
         foreach ($result_01 as $index => $arr) {
