@@ -1,6 +1,6 @@
 <?php
 
-$page_name = new Tag('h1','DATA: Only as reliable as its source<hr>',['id'=>'page_name']);
+$page_name = new Tag('h1','DATA: Only as reliable as its source',['id'=>'page_name']);
 
 $image_tag = new Image('images/virus_image_conceptual_02.jpg','Digital Representation of a Virus');
 
@@ -18,7 +18,7 @@ $accordion_copy_01 = [
 
 function get_accordion_item_html($id, $index, $key, $value) {
     return  <<<TEMP
-        <div class="accordion-item"><h2 class="accordion-header" id="heading{$index}"><a href='#accordianMarker'><button class="accordion-button element-contrasted collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{$index}" aria-expanded="false" aria-controls="collapse_{$index}" onclick="this.blur()" >{$key}</button></a></h2><div id="collapse_{$index}" class="accordion-collapse collapse" aria-labelledby="heading{$index}" data-bs-parent="#accordion_{$id}"><div class="accordion-body">{$value}</div></div></div>
+        <div class="accordion-item"><h2 class="accordion-header" id="heading{$index}"><button class="accordion-button element-contrasted collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{$index}" aria-expanded="false" aria-controls="collapse_{$index}" onclick="this.blur()" >{$key}</button></h2><div id="collapse_{$index}" class="accordion-collapse collapse" aria-labelledby="heading{$index}" data-bs-parent="#accordion_{$id}"><div class="accordion-body">{$value}</div></div></div>
 TEMP;
 }
 
@@ -34,12 +34,16 @@ function build_accordion_block($accordion_array, $id, $column_classes) {
 }
 
 $preface_stmt_inner = "
-    <div class='row'><div class='col-xs-12 col-md-6'>
+    <div class='row'><div class='col-xs-12'>
         <h2>Preface:</h2>
-        <p>It is important to realize that these graphs and the eventual value judgments &amp; opinions which you are likely to distil from the data are at the whim of the source data providors. Shit in is shit out. By looking at the agregate, we can hope to actually 'miss the trees for the forest'; to turn the old adage on its head. But this by no means a guarantee that errors will be mitigated over gross data sets.</p>
-        <p>Example: Do you feel as though it is reasonable to declare the cause of death as COVID if the patient was never tested? This is a very probmomatic methodology, to put it mildly.</p>
-        <p>And while it is slightly outside the purview of the main goal of this site, in time there will also be data with respect to vaccination against COVID.</p>
+    </div>
+    <div class='row'><div class='col-xs-12 col-md-6'>
+
+        <p>It is important to realize that these graphs and the eventual value judgments &amp; opinions which you are likely to distil from the data are at the whim of the source data providors. <strong>Shit in is shit out.</strong> By looking at the agregate, we can <strong>hope</strong> to actually 'miss the trees for the forest'; to turn the old adage on its head and mitigate bad actors injecting bad data. But this by no means a guarantee that errors will be mitigated over gross data sets.</p>
+        <p>Example: Do you feel as though it is reasonable to declare a case of covid and/or the cause of death as COVID if the patient was never tested? This is a very probmomatic methodology, to put it mildly - but the reality is that it is happening in 'free' and supossedly open societies. Then there are the bad actors under reporting perhaps, either due to a poor ability to collect data or test - or out of outright propoganda.</p>
+        <p>But I am not afforded the time or resources to analyze and vet every source of every data point.</p>
     </div><div class='col-xs-12 col-md-6'>
+        <p>The main point here is to give people an objective source to look at the data which the politicians and mainstream media weaponize against you.</p>
         <h2>Important Quote:</h2>
         <figure>
             <blockquote cite=''>
@@ -60,9 +64,40 @@ $preface_stmt_outer_obj = new Tag('div', $preface_stmt_inner_obj->get_html(),['c
 
 echo "<div class='container'>";
 
+echo "<div class='country-selected-message'></div>";
+
+echo <<<LAYOUT
+<div id="" class="d-none d-md-block layout-selector hideMe ">
+    <div class="layout-selector-buttons">
+        <button class="layout-selector-button" data-col-md="6">
+        <img src="./images/2_across_01.svg" />
+        </button>
+
+        <button class="layout-selector-button" data-col-md="4">
+        <img src="./images/3_across_01.svg" />
+        </button>
+
+        <button class="layout-selector-button" data-col-md="3">
+        <img src="./images/4_across_01.svg" />
+        </button>
+        </div>
+    <div class="layout-selector-title">Graph Layout <i class="fas fa-arrow-circle-right"></i></div>
+</div>
+LAYOUT;
+
+echo <<<LOADING_WHEEL
+<div class="loading-graphs-wheel hideMe">
+    <h5 align="center">Loading</h5>
+    <div class="loading-graphs-wheel-inner">
+        <img src="./images/linus_the_virus_01.svg"/>
+    </div>
+    <h5 align="center">Graphs</h5>
+</div>
+LOADING_WHEEL;
+
 $page_name->echo_html();
 
-echo "<div class='row' id='renderArea'>";
+echo "<hr><div class='row' id='renderArea'>";
 
 $image_hero_small_screen->echo_html();
 
@@ -74,4 +109,5 @@ echo build_accordion_block($accordion_copy_01, "Preface", "col-xs-12 col-lg-7");
 $image_column->echo_html();
 
 echo "</div><!--End Render Area-->";
+
 echo "</div><!--End container-->";

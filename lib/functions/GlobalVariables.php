@@ -16,7 +16,7 @@ class GlobalVariables {
     //     'db_name' => 'u582415725_QtVCm3hnAr',        
     // ];
     
-    public static $asymptomaticRate = 1.326;
+    public static $asymptomaticRate = 1.396;
 
     public static $bad_url_mssg = "<h3>Swing and a miss!<br><br>That was not a valid URL.</h3>";
 

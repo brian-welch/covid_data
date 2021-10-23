@@ -17,18 +17,18 @@ class Queryrouter {
         $this->db_details = GlobalVariables::$db_details;
         $this->category = $get_array['category'];
         $this->country_ids = $get_array['country_ids'];
-        $this->count = $get_array['count'];
-        $this->id_range_start = $get_array['id_range_start'];
+        // $this->count = $get_array['count'];
+        // $this->id_range_start = $get_array['id_range_start'];
        
         switch ($this->category) {
             case 'casesPerMillion':
-                $this->casesPerMillion($this->country_ids,$this->count,$this->id_range_start);
+                $this->casesPerMillion($this->country_ids);
                 break;
             case 'deathsPerMillion':
-                $this->deathsPerMillion($this->country_ids,$this->count,$this->id_range_start);
+                $this->deathsPerMillion($this->country_ids);
                 break;
             case 'mortalityRateByCases':
-                $this->mortalityRateByCases($this->country_ids,$this->count,$this->id_range_start);
+                $this->mortalityRateByCases($this->country_ids);
                 break;
             default:
                 die("Bug: Query Router > construct function");
@@ -36,14 +36,14 @@ class Queryrouter {
 
     }
 
-    private function casesPerMillion($country_ids, $count, $id_range_start) {
-        $id_range_start = intval($id_range_start);
-        $count = intval($count);
+    private function casesPerMillion($country_ids) {
+        // $id_range_start = intval($id_range_start);
+        // $count = intval($count);
         $where_01 = 'WHERE ';
         $where_02 = 'WHERE ';
         $column_name = "";
         $grouped_rows = [];
-        $id_arr  = ($country_ids !== 'all' ? explode(",", $country_ids) : range($id_range_start, $count));
+        $id_arr  = ($country_ids !== 'all' ? explode(",", $country_ids) : range(1, 185));
 
         foreach ($id_arr as $index => $id) {
             $where_01 .= ($index > 0 ? " OR " : "") . " ID = " . $id;
@@ -63,6 +63,7 @@ class Queryrouter {
             $grouped_rows[intval($arr['ID'])] += ['population'=>intval($arr['Population'])];
             $grouped_rows[intval($arr['ID'])] += ['healthcareEfficiencyRank'=>intval($arr['HealthcareEfficiencyRank'])];
             $grouped_rows[intval($arr['ID'])] += ['cummulativeMortalityCasesAdj'=>floatval($arr['CummulativeMortalityCasesAdj'])];
+            $grouped_rows[intval($arr['ID'])] += ['datasetLabel'=>'Cases/M'];
             $grouped_rows[intval($arr['ID'])] += ['dates'=>[]];
             $grouped_rows[intval($arr['ID'])] += ['dataPoints'=>[]];
         }
@@ -85,14 +86,14 @@ class Queryrouter {
 
     }
 
-    private function deathsPerMillion($country_ids, $count, $id_range_start) {
-        $id_range_start = intval($id_range_start);
-        $count = intval($count);
+    private function deathsPerMillion($country_ids) {
+        // $id_range_start = intval($id_range_start);
+        // $count = intval($count);
         $where_01 = 'WHERE ';
         $where_02 = 'WHERE ';
         $column_name = "";
         $grouped_rows = [];
-        $id_arr  = ($country_ids !== 'all' ? explode(",", $country_ids) : range($id_range_start, $count));
+        $id_arr  = ($country_ids !== 'all' ? explode(",", $country_ids) : range(1, 185));
 
         foreach ($id_arr as $index => $id) {
             $where_01 .= ($index > 0 ? " OR " : "") . " ID = " . $id;
@@ -112,6 +113,7 @@ class Queryrouter {
             $grouped_rows[intval($arr['ID'])] += ['population'=>intval($arr['Population'])];
             $grouped_rows[intval($arr['ID'])] += ['healthcareEfficiencyRank'=>intval($arr['HealthcareEfficiencyRank'])];
             $grouped_rows[intval($arr['ID'])] += ['cummulativeMortalityCasesAdj'=>floatval($arr['CummulativeMortalityCasesAdj'])];
+            $grouped_rows[intval($arr['ID'])] += ['datasetLabel'=>'Deaths/M'];
             $grouped_rows[intval($arr['ID'])] += ['dates'=>[]];
             $grouped_rows[intval($arr['ID'])] += ['dataPoints'=>[]];
         }
@@ -119,8 +121,8 @@ class Queryrouter {
         $yAxis_max = 0;
         foreach ($result_02 as $index => $arr) {
             $grouped_rows[intval($arr['CountryID'])]['dates'][] = '"' . $arr['DatapointDate'] . '"';
-            $grouped_rows[intval($arr['CountryID'])]['dataPoints'][] = intval($arr['Deaths15Day1M']);
-            $yAxis_max = (intval($arr['Deaths15Day1M']) > $yAxis_max ? intval($arr['Deaths15Day1M']) : $yAxis_max);
+            $grouped_rows[intval($arr['CountryID'])]['dataPoints'][] = floatval($arr['Deaths15Day1M']);
+            $yAxis_max = (floatval($arr['Deaths15Day1M']) > $yAxis_max ? floatval($arr['Deaths15Day1M']) : $yAxis_max);
         }
 
         foreach($grouped_rows as $country_id => $data_array) {
@@ -134,14 +136,14 @@ class Queryrouter {
 
     }
 
-    private function mortalityRateByCases($country_ids, $count, $id_range_start) {
-        $id_range_start = intval($id_range_start);
-        $count = intval($count);
+    private function mortalityRateByCases($country_ids) {
+        // $id_range_start = intval($id_range_start);
+        // $count = intval($count);
         $where_01 = 'WHERE ';
         $where_02 = 'WHERE ';
         $column_name = "";
         $grouped_rows = [];
-        $id_arr  = ($country_ids !== 'all' ? explode(",", $country_ids) : range($id_range_start, $count));
+        $id_arr  = ($country_ids !== 'all' ? explode(",", $country_ids) : range(1, 185));
 
         foreach ($id_arr as $index => $id) {
             $where_01 .= ($index > 0 ? " OR " : "") . " ID = " . $id;
@@ -161,6 +163,7 @@ class Queryrouter {
             $grouped_rows[intval($arr['ID'])] += ['population'=>intval($arr['Population'])];
             $grouped_rows[intval($arr['ID'])] += ['healthcareEfficiencyRank'=>intval($arr['HealthcareEfficiencyRank'])];
             $grouped_rows[intval($arr['ID'])] += ['cummulativeMortalityCasesAdj'=>floatval($arr['CummulativeMortalityCasesAdj'])];
+            $grouped_rows[intval($arr['ID'])] += ['datasetLabel'=>'%'];
             $grouped_rows[intval($arr['ID'])] += ['dates'=>[]];
             $grouped_rows[intval($arr['ID'])] += ['dataPoints'=>[]];
         }
@@ -292,6 +295,7 @@ class Queryrouter {
 
 
 $get_array = [];
+
 
 foreach($_GET as $key=>$value) {
     $get_array[$key] = $value;
