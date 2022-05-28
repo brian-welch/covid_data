@@ -557,7 +557,7 @@ blockquote p::after {
     width: 100%;
 }
 .covid-graph {
-    max-height: 150px !important;
+    height: 250px !important;
 }
 
 .chart-force-height-zero {
