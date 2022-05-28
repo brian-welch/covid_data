@@ -264,9 +264,12 @@ class BuildDailyDataTable {
 
     private function create_daily_data_table($details){
         $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
+        
+        // SQL to drop DailyData Table
+        $sql_01 = "DROP TABLE IF EXISTS DailyData";
 
         // sql to create table
-        $sql_01 = "CREATE TABLE IF NOT EXISTS DailyData (
+        $sql_02 = "CREATE TABLE IF NOT EXISTS DailyData (
             ID INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             CountryID INT(32) NOT NULL,
             Timestamp TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP(6),
@@ -284,6 +287,11 @@ class BuildDailyDataTable {
             )";
         
         if ($conn->query($sql_01) === FALSE) {
+            die('¡Error! DROP TABLE \'DailyData\' -> ' . $conn->error );
+
+        }
+
+        if ($conn->query($sql_02) === FALSE) {
             die('¡Error! CREATE TABLE \'DailyData\' -> ' . $conn->error );
 
         }
@@ -314,7 +322,7 @@ class BuildDailyDataTable {
     }
     
     private function per_million($number, $population){
-        return intval(round(($number * 1000000)/$population,2));
+        return (round(($number * 1000000)/$population,2));
     }
 
     private function fifteen_day_avg($number_array) {
