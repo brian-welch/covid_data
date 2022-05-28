@@ -275,10 +275,10 @@ class BuildDailyDataTable {
             CasesRaw INT(9) NOT NULL,
             CasesAdj INT(9) NOT NULL,
             CasesAdj15Day INT(9) NOT NULL,
-            CasesAdj15Day1M INT(9) NOT NULL,
+            CasesAdj15Day1M DECIMAL(11,2) NOT NULL,
             DeathsRaw INT(9),
             Deaths15Day INT(9),
-            Deaths15Day1M INT(9),
+            Deaths15Day1M DECIMAL(11,2),
             MortalityVsCases DECIMAL(5,2),
             CummulativeNaturalImmunity INT(12) NOT NULL
             )";
@@ -314,7 +314,7 @@ class BuildDailyDataTable {
     }
     
     private function per_million($number, $population){
-        return intval(round(($number * 1000000)/$population));
+        return intval(round(($number * 1000000)/$population,2));
     }
 
     private function fifteen_day_avg($number_array) {
