@@ -207,7 +207,7 @@ class Queryrouter {
         $conn = new mysqli($this->db_details['servername'], $this->db_details['username'], $this->db_details['password'], $this->db_details['db_name']);
         
         $sql = "
-        SELECT * FROM country $where;
+        SELECT * FROM Country $where;
         ";
 
         $result = $conn->query($sql);
