@@ -9,6 +9,7 @@ class GlobalVariables {
         'db_name' => 'CovidDataByCountry01',        
     ];
 
+    
     // public static $db_details = [
     //     'servername' => 'localhost',
     //     'username' => 'u582415725_root',
