@@ -1,0 +1,2 @@
+# Ignore DB Connection Details
+lib/functions/GlobalVariables.php
