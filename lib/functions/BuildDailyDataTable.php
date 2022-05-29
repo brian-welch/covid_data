@@ -25,8 +25,8 @@ class BuildDailyDataTable {
 
     }
 
-    private function parse_then_populate($details,$country_array) {
-        $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
+    private function parse_then_populate($db_details,$country_array) {
+        $conn = new mysqli($db_details['servername'], $db_details['username'], $db_details['password'], $db_details['db_name']);
 
         $truncate = "TRUNCATE TABLE DailyData";
 
@@ -38,15 +38,15 @@ class BuildDailyDataTable {
         
         set_time_limit(150);
         foreach($country_array as $country_name => $meta_array) {
-            $this->parse_country_data($details, $country_name, $meta_array);
-            $this->populate_daily_data_table($details, $this->all_countries_data);
+            $this->parse_country_data($db_details, $country_name, $meta_array);
+            $this->populate_daily_data_table($db_details, $this->all_countries_data);
             sleep(0.5);
         }
         $default_max_execution_time = ini_get('max_execution_time');
         set_time_limit($default_max_execution_time);
     }
 
-    private function parse_country_data($details, $country_name, $meta_array)/*$country_array)*/ {         
+    private function parse_country_data($db_details, $country_name, $meta_array)/*$country_array)*/ {         
         $this->all_countries_data = [];
         
         
@@ -172,7 +172,7 @@ class BuildDailyDataTable {
             // die();
             error_log("\n$country_name didn't parse..... Trying again\n\n");
             goto retry;
-            // parse_country_data($details, $country_name, $meta_array);
+            // parse_country_data($db_details, $country_name, $meta_array);
         }
 
         if(!isset($country_data_arr["deaths_raw"])) {
@@ -201,10 +201,10 @@ class BuildDailyDataTable {
 
     } // Parser ends here
 
-    private function populate_daily_data_table($details, $country_data) {
+    private function populate_daily_data_table($db_details, $country_data) {
         print_r(" ---> Populate the table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 
-        $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
+        $conn = new mysqli($db_details['servername'], $db_details['username'], $db_details['password'], $db_details['db_name']);
 
         foreach($country_data as $country_id => $daily_data) {
             $datapoint_dates                = $daily_data['datapoint_dates'];
@@ -262,8 +262,8 @@ class BuildDailyDataTable {
 
     } // Populate table ends here
 
-    private function create_daily_data_table($details){
-        $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
+    private function create_daily_data_table($db_details){
+        $conn = new mysqli($db_details['servername'], $db_details['username'], $db_details['password'], $db_details['db_name']);
         
         // SQL to drop DailyData Table
         $sql_01 = "DROP TABLE IF EXISTS DailyData";
@@ -298,8 +298,8 @@ class BuildDailyDataTable {
 
     }
 
-    private function test_connection_to_db($details) {
-        $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
+    private function test_connection_to_db($db_details) {
+        $conn = new mysqli($db_details['servername'], $db_details['username'], $db_details['password'], $db_details['db_name']);
 
         // Check connection
         if ($conn->connect_error) {

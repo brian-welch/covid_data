@@ -10,7 +10,7 @@ class BuildDailyDataArchive {
         
     }
     
-    private function archive_exising_daily_data($details) {
+    private function archive_exising_daily_data($db_details) {
         $date_array = explode('-',date("Y-m"));
         $path_and_filename = "{$this->dir}/archive/$date_array[0]/$date_array[1]/monthly_data_dump_$date_array[0]-$date_array[1].csv";
 
@@ -18,7 +18,7 @@ class BuildDailyDataArchive {
             die();
         }
         
-        $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
+        $conn = new mysqli($db_details['servername'], $db_details['username'], $db_details['password'], $db_details['db_name']);
         
         $this->make_dir($date_array);
         

@@ -26,8 +26,8 @@ class BuildCountryTable {
         
     }
 
-    private function test_connection_to_db($details) {
-        $conn = new mysqli($details['servername'], $details['username'], $details['password']);
+    private function test_connection_to_db($db_details) {
+        $conn = new mysqli($db_details['servername'], $db_details['username'], $db_details['password']);
 
         // Check connection
         if ($conn->connect_error) {
@@ -36,20 +36,20 @@ class BuildCountryTable {
 
     }
 
-    private function create_db($details) {
-        $conn = new mysqli($details['servername'], $details['username'], $details['password']);
+    private function create_db($db_details) {
+        $conn = new mysqli($db_details['servername'], $db_details['username'], $db_details['password']);
 
         // Create DB
-        $sql = "CREATE DATABASE IF NOT EXISTS {$details['db_name']}";
+        $sql = "CREATE DATABASE IF NOT EXISTS {$db_details['db_name']}";
         if ($conn->query($sql) === FALSE) {
-            $this->log_mssg .= "\n¡Error! CREATE DATABASE IF NOT EXISTS '{$details['db_name']}' :: " . $conn->error . "\n";
+            $this->log_mssg .= "\n¡Error! CREATE DATABASE IF NOT EXISTS '{$db_details['db_name']}' :: " . $conn->error . "\n";
             $this->log_mssg .= "- - - - - - - - - - - - - - -\n";
         }
 
     }
 
-    private function create_country_table($details) {
-        $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
+    private function create_country_table($db_details) {
+        $conn = new mysqli($db_details['servername'], $db_details['username'], $db_details['password'], $db_details['db_name']);
 
         $sql_01 = "DROP TABLE IF EXISTS Country";
 
@@ -85,9 +85,9 @@ class BuildCountryTable {
         
     }
     
-    private function populate_country_table($details, $country_array) {
+    private function populate_country_table($db_details, $country_array) {
 
-        $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
+        $conn = new mysqli($db_details['servername'], $db_details['username'], $db_details['password'], $db_details['db_name']);
         
         
         $sql_01 = "TRUNCATE TABLE Country";
