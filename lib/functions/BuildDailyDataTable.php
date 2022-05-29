@@ -13,14 +13,10 @@ class BuildDailyDataTable {
         $this->log_mssg = '';
         
         // GLOBAL VARIABLES
-        $this->db_details = [
-            'servername' => 'localhost',
-            'username' => 'u582415725_root',
-            'password' => 'Kanuffen1234@',
-            'db_name' => 'u582415725_QtVCm3hnAr',        
-        ];
-        $this->asymptomaticRate = 1.326;
+        $this->db_details = GlobalVariables::$db_details;
+        $this->asymptomaticRate = GlobalVariables::$asymptomaticRate;
 
+        
         $this->test_connection_to_db($this->db_details);
         
         $this->create_daily_data_table($this->db_details);
@@ -210,7 +206,6 @@ class BuildDailyDataTable {
 
         $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
 
-
         foreach($country_data as $country_id => $daily_data) {
             $datapoint_dates                = $daily_data['datapoint_dates'];
             $cases_raw                      = $daily_data['cases_raw'];
@@ -267,12 +262,14 @@ class BuildDailyDataTable {
 
     } // Populate table ends here
 
-
     private function create_daily_data_table($details){
         $conn = new mysqli($details['servername'], $details['username'], $details['password'], $details['db_name']);
+        
+        // SQL to drop DailyData Table
+        $sql_01 = "DROP TABLE IF EXISTS DailyData";
 
         // sql to create table
-        $sql_01 = "CREATE TABLE IF NOT EXISTS DailyData (
+        $sql_02 = "CREATE TABLE IF NOT EXISTS DailyData (
             ID INT(32) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             CountryID INT(32) NOT NULL,
             Timestamp TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP(6),
@@ -281,15 +278,20 @@ class BuildDailyDataTable {
             CasesRaw INT(9) NOT NULL,
             CasesAdj INT(9) NOT NULL,
             CasesAdj15Day INT(9) NOT NULL,
-            CasesAdj15Day1M INT(9) NOT NULL,
+            CasesAdj15Day1M DECIMAL(11,2) NOT NULL,
             DeathsRaw INT(9),
             Deaths15Day INT(9),
-            Deaths15Day1M INT(9),
+            Deaths15Day1M DECIMAL(11,2),
             MortalityVsCases DECIMAL(5,2),
             CummulativeNaturalImmunity INT(12) NOT NULL
             )";
         
         if ($conn->query($sql_01) === FALSE) {
+            die('¡Error! DROP TABLE \'DailyData\' -> ' . $conn->error );
+
+        }
+
+        if ($conn->query($sql_02) === FALSE) {
             die('¡Error! CREATE TABLE \'DailyData\' -> ' . $conn->error );
 
         }
@@ -307,7 +309,6 @@ class BuildDailyDataTable {
     }
     
 
-
     /*   PARSER SUB - FUNCTIONS   */
 
     private function array_flipper($date) {
@@ -321,7 +322,7 @@ class BuildDailyDataTable {
     }
     
     private function per_million($number, $population){
-        return intval(round(($number * 1000000)/$population));
+        return (round(($number * 1000000)/$population,2));
     }
 
     private function fifteen_day_avg($number_array) {

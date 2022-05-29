@@ -26,6 +26,7 @@ $block = <<<HEADER
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/style.css?{$add_file_suffix}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js" integrity="sha512-b3xr4frvDIeyC3gqR1/iOi6T+m3pLlQyXNuvn5FiRrrKiMUJK3du2QqZbCywH6JxS5EOfW0DY0M6WwdXFbCBLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <script src="js/before.js?{$add_file_suffix}"></script>
     </head>
     <body>
@@ -34,28 +35,82 @@ $block = <<<HEADER
 
             <nav class="navbar navbar-dark bg-dark">
                 <div class="container-fluid header">
-                {$site_name->get_html()}
-                    <button class="navbar-toggler hamburger-menu-outer d-none d-sm-block" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="this.blur()">
-                        <span class="hamburger-menu-inner" >
-                            <hr><hr><hr>
-                        </span>
-                    </button>
+                    {$site_name->get_html()}
+                    <div id="" class="button_container">
+                        <button id="filterMenuButton" class="navbar-toggler filter-menu-button-outer d-none d-sm-block menuClickable hideMe" type="button" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="this.blur()">
+                            <span class="filter-menu-button-inner" >
+                            <span class="rotate_180"><i class="fas fa-sort-amount-up-alt"></i></span>
+                                <i class="fas fa-sort-amount-up"></i>
+                            </span>
+                        </button>
+                        <button class="navbar-toggler hamburger-menu-button-outer d-none d-sm-block menuClickable" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="this.blur()">
+                            <span class="hamburger-menu-button-inner" >
+                                <hr><hr><hr>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </nav>
 
-            <div class="collapse" id="navbarMainMenu">
+            <div class="collapse menuSort" id="navbarMainMenu">
                 <div class="bg-dark main-menu">
                     <ul>
                         <hr>
-                        <li class="main-menu_button" id="casesPerMillion" data-bs-toggle="collapse" data-bs-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation"><a href="#">Cases Per Million</a></li>
+                        <li class="main-menu-button menuClickable" id="casesPerMillion" data-bs-toggle="collapse" data-bs-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation"><a href="#">Cases Per Million</a></li>
                         <hr>
-                        <li class="main-menu_button" id="deathsPerMillion" data-bs-toggle="collapse" data-bs-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation"><a href="#">Deaths Per Million</a></li>
+                        <li class="main-menu-button menuClickable" id="deathsPerMillion" data-bs-toggle="collapse" data-bs-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation"><a href="#">Deaths Per Million</a></li>
                         <hr>
-                        <li class="main-menu_button" id="mortalityRateByCases" data-bs-toggle="collapse" data-bs-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation"><a href="#">Mortality Rate By Cases</a></li>
+                        <li class="main-menu-button menuClickable" id="mortalityRateByCases" data-bs-toggle="collapse" data-bs-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation"><a href="#">Mortality Rate By Cases</a></li>
                     </ul>
                 </div>
             </div>
-            
+
+            <div class="collapse menuSort" id="filterMenu">
+                <div class="bg-dark filter-menu-inner">
+                    <hr>
+                    <div id="" class="sort-filter-section">
+                        <h5>Sort Graphs By:</h5>
+                        <button id="" class="sort-button" data-sort-direction="asc" data-sort-param="countryName">Country Name</button>
+                        <button id="" class="sort-button" data-sort-direction="asc" data-sort-param="population">Population</button>
+                        <button id="" class="sort-button" data-sort-direction="asc" data-sort-param="healthcareEfficiency">Heathcare Efficiency</button>
+                        <button id="" class="sort-button" data-sort-direction="asc" data-sort-param="highestPeak">Graph Peaks</button>
+                        <button id="" class="sort-button" data-sort-direction="asc" data-sort-param="sumCummulativeData">Graph Area Sum</button>
+                    </div>
+                    <div id="sortingText"></div>
+                    <hr>
+                    <!--<div id="" class="layout-customizer">
+                        <h5>Layout:</h5>
+                        <button class="layout-button" data-col-md="6">
+                            <img src="./images/2_across_01.svg" />
+                        </button>
+                        <button class="layout-button" data-col-md="4">
+                            <img src="./images/3_across_01.svg" />
+                        </button>
+                        <button class="layout-button" data-col-md="3">
+                            <img src="./images/4_across_01.svg" />
+                        </button>
+                    </div>
+                    <hr>-->
+                    <div id="" class="">
+                        <h5>County Selector:</h5>
+                        <div id="" class="country-filter-thumbnail"><img src="./images/example_graph_01.jpg" /></div>
+                        
+                        <div id="" class="country-filter-message hideMe" data-filter-param="country">
+                            <span>Coutries Selected: Clicking 'Apply' will filter to only the selected countries</span>
+                            <button class="deselect-countries-button">Deselect All Countries</button>
+                        </div>
+                    </div>
+                    <div class="bottom-buttons">
+                        <button id="applyFilters" class="apply-filter-menu-button" type="button" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="this.blur()">
+                            <a href="#">Apply</a>
+                        </button>
+                        <button id="closefilters" class="apply-filter-menu-button" type="button" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="this.blur()">
+                            <a href="#">Cancel</a>
+                        </button>
+                    </div>
+                </div>
+            </div>            
+
         </div>
     </div>
 HEADER;

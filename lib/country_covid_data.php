@@ -7,7 +7,6 @@ $all_countries_data = build_all_the_countries_data($countries);
 // a multidimensional associative array
 // used in cases_cahrts.php -> function render_all_country_cases($all_countries_data) 
 
-
 function build_all_the_countries_data($countries) {
     $all_countries_data = array();
 
@@ -24,7 +23,6 @@ function build_all_the_countries_data($countries) {
 function country_url($slug) {
     return "https://www.worldometers.info/coronavirus/country/{$slug}/";
  }
-
 
 function country_covid_data($page) {
     

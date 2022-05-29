@@ -2,7 +2,6 @@
 
 $all_lines_home_page = file("https://www.worldometers.info/coronavirus/");
 
-
 function getPopulation($slug) {
     //returns population in integer type
     $population = 0;
@@ -76,8 +75,6 @@ $countries = array(
     //     "population" => getPopulation("india"),
     // ),
 );
-
-
 
 
 
