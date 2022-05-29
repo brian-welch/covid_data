@@ -2,19 +2,19 @@
 
 class GlobalVariables {
 
-    // public static $db_details = [
-    //     'servername' => '127.0.0.1',
-    //     'username' => 'root',
-    //     'password' => 'Kanuffen1234@',
-    //     'db_name' => 'CovidDataByCountry01',        
-    // ];
-
     public static $db_details = [
-        'servername' => 'localhost',
-        'username' => 'u582415725_root',
+        'servername' => '127.0.0.1',
+        'username' => 'root',
         'password' => 'Kanuffen1234@',
-        'db_name' => 'u582415725_QtVCm3hnAr',        
+        'db_name' => 'CovidDataByCountry01',        
     ];
+
+    // public static $db_details = [
+    //     'servername' => 'localhost',
+    //     'username' => 'u582415725_root',
+    //     'password' => 'Kanuffen1234@',
+    //     'db_name' => 'u582415725_QtVCm3hnAr',        
+    // ];
     
     public static $asymptomaticRate = 1.396;
 
