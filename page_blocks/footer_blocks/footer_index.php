@@ -7,7 +7,7 @@ include 'block_three.php';
 $footer = <<<FOOTER
 <div id="footerContainer" class="container">
     <div class="row">
-    {$block_one}
+    <!--block_one-->
     {$block_two}
     {$block_three}
     </div>
