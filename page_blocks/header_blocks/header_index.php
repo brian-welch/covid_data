@@ -78,19 +78,6 @@ $block = <<<HEADER
                     </div>
                     <div id="sortingText"></div>
                     <hr>
-                    <!--<div id="" class="layout-customizer">
-                        <h5>Layout:</h5>
-                        <button class="layout-button" data-col-md="6">
-                            <img src="/covid_data/images/2_across_01.svg" />
-                        </button>
-                        <button class="layout-button" data-col-md="4">
-                            <img src="/covid_data/images/3_across_01.svg" />
-                        </button>
-                        <button class="layout-button" data-col-md="3">
-                            <img src="/covid_data/images/4_across_01.svg" />
-                        </button>
-                    </div>
-                    <hr>-->
                     <div id="" class="">
                         <h5>County Selector:</h5>
                         <div id="" class="country-filter-thumbnail"><img src="/covid_data/images/example_graph_01.jpg" /></div>
