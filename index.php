@@ -9,6 +9,8 @@ function myLoad($class) {
     }
 }
 
+GlobalVariables::errorBundle();
+
 spl_autoload_register('myLoad');
 
 include "{$_SERVER['DOCUMENT_ROOT']}/covid_data/page_blocks/header_blocks/header_index.php";
@@ -16,7 +18,3 @@ include "{$_SERVER['DOCUMENT_ROOT']}/covid_data/page_blocks/header_blocks/header
 include "{$_SERVER['DOCUMENT_ROOT']}/covid_data/page_blocks/body_blocks/body_index.php";
 
 include "{$_SERVER['DOCUMENT_ROOT']}/covid_data/page_blocks/footer_blocks/footer_index.php";
-
-/*
-$_SERVER['DOCUMENT_ROOT'] needed??
- */
