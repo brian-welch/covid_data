@@ -1,5 +1,7 @@
 <?php
 
+GlobalVariables::errorBundle();
+
 function myLoad($class) {
     
     foreach(['queries', 'componants', 'elements', 'forms', 'base', 'functions'] as $prefix) {
