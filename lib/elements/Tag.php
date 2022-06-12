@@ -1,7 +1,6 @@
 <?php
 
 class Tag {
-
     function __construct($tag_name, $tag_content = "", $attrs = ['style'=>''], $render_direct = false) {
         $this->tag_name = $tag_name;
         $this->tag_content = $tag_content;

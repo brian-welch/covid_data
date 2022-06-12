@@ -37,12 +37,18 @@ $block = <<<HEADER
                 <div class="container-fluid header">
                     {$site_name->get_html()}
                     <div id="" class="button_container">
+
+                        <button class="navbar-toggler filter-menu-button-outer d-none d-sm-block menuClickable hideMe" type="button">
+                            <a href="/covid_data/usa/">How to the states of the USA match up?</a>
+                        </button>
+
                         <button id="filterMenuButton" class="navbar-toggler filter-menu-button-outer d-none d-sm-block menuClickable hideMe" type="button" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="this.blur()">
                             <span class="filter-menu-button-inner" >
                             <span class="rotate_180"><i class="fas fa-sort-amount-up-alt"></i></span>
                                 <i class="fas fa-sort-amount-up"></i>
                             </span>
                         </button>
+
                         <button class="navbar-toggler hamburger-menu-button-outer d-none d-sm-block menuClickable" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="this.blur()">
                             <span class="hamburger-menu-button-inner" >
                                 <hr><hr><hr>

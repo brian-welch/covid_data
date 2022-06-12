@@ -1,7 +1,6 @@
 <?php
 
 class Image {
-
     // Submitted arguments
     public $src;
     private $attrs;
