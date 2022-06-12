@@ -41,7 +41,7 @@ $footer = <<<FOOTER
             </div>
         </nav>
     </div>
-    <script src="js/after.js?{$add_file_suffix}"></script>
+    <script src="/covid_data/js/after.js?{$add_file_suffix}"></script>
     </body></html>
 
 FOOTER;
