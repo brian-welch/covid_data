@@ -6,7 +6,7 @@ $image_tag = new Image('images/virus_image_conceptual_02.jpg','Digital Represent
 
 $image_column = new Tag('div', '',['class'=>'col-lg-5 d-none d-lg-flex flex-column virus-hero']);
 
-$image_hero_small_screen = new Tag('div', $image_tag->get_html(),['class'=>'col-xs-12 d-xs-block d-lg-none']);
+$image_hero_small_screen = new Tag('div', $image_tag->get_html(),['class'=>'col-xs-12 d-xs-block d-lg-none']);//, 'style'=>'margin-bottom:20px;max-height:150px;display:flex;justify-content:center;align-items:center;']);
 $image_hero_small_screen->set_attribute('style','margin-bottom:20px;max-height:150px;display:flex;justify-content:center;align-items:center;');
 
 $accordion_copy_01 = [

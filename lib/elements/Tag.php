@@ -2,7 +2,7 @@
 
 class Tag {
 
-    function __construct($tag_name, $tag_content = "", $attrs = [], $render_direct = false) {
+    function __construct($tag_name, $tag_content = "", $attrs = ['style'=>''], $render_direct = false) {
         $this->tag_name = $tag_name;
         $this->tag_content = $tag_content;
         $this->attrs = $attrs;
@@ -10,7 +10,7 @@ class Tag {
     }
 
     public function set_attribute($attr, $value) {
-        $this->attrs[$attr] ? $this->attrs[$attr] .= " {$value}" : $this->attrs[$attr] = "{$value}";
+        isset($this->attrs[$attr]) ? $this->attrs[$attr] .= " {$value}" : $this->attrs[$attr] = "{$value}";
     }
 
     public function get_html() {

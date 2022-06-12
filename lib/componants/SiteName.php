@@ -12,7 +12,7 @@ class SiteName {
     }
     
     public function set_attribute($attr, $value) {
-        array_key_exists($attr, $this->attrs) ? $this->attrs[$attr] .= " " . $value : $this->attrs[$attr] = $value;
+        isset($this->attrs[$attr]) ? $this->attrs[$attr] .= " " . $value : $this->attrs[$attr] = $value;
     }
 
     public function get_html() {
