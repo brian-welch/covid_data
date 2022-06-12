@@ -46,6 +46,6 @@ $footer = <<<FOOTER
 
 FOOTER;
 
-new Tag("hr","","",true);
+new Tag("hr","",[],true);
 
 echo $footer;
