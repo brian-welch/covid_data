@@ -251,7 +251,7 @@ async function graphDataAjax(query_string) {
     const results = await $.ajax({
         method: "GET",
         data: query_string,
-        url: "../covid_data/lib/queries/QueryRouter.php",
+        url: "/covid_data/lib/queries/QueryRouter.php",
     });
     resultsJson = JSON.parse(results);
     for (const [key, value] of Object.entries(resultsJson)){
