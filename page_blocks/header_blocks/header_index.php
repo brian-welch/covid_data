@@ -39,7 +39,7 @@ $block = <<<HEADER
                     <div id="" class="button_container">
 
                         <button class="navbar-toggler filter-menu-button-outer d-none d-sm-block menuClickable hideMe" type="button">
-                            <a href="/covid_data/usa/">How to the states of the USA match up?</a>
+                            <a href="/covid_data/usa/">The 'States'</a>
                         </button>
 
                         <button id="filterMenuButton" class="navbar-toggler filter-menu-button-outer d-none d-sm-block menuClickable hideMe" type="button" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="this.blur()">
