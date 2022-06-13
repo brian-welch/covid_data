@@ -193,11 +193,9 @@ function revealGraphs(category, countryIdString, graphJsonObjArray = [], is_sort
     let graphArray = [];
     if (category === "filtered") {
         $(".filter-menu-button-outer").addClass("hideMe");
-        // const count = getCount([countryIdString.split(",").length, graphJsonObjArray.length, parseInt(countIn)]);
         graphArray = buildGraphArray(countryIdString, graphJsonObjArray);
         graphIteratorRender(graphArray, is_sorted);
     } else {
-        // const count = getCount([countryIdString.split(",").length, graphArray.length, parseInt(countIn)]);
         graphArray = buildGraphArray(countryIdString, eval(category + "GraphArray"));
         graphIteratorRender(graphArray);
     }
@@ -219,7 +217,6 @@ function initiateGraphRender(event, queryString = '', countryIdString = ''){
 
     resetFilters();
 
-    // let newUrl = addQueryString(window.location.href, queryJson);
     let newUrl = addQueryString(window.location.href, getQueryJson(page, category, country_ids));
     window.history.pushState({}, '', newUrl);
     $("#page_name").html(page + "<span></span>"), revealGraphs(category, country_ids);
@@ -362,11 +359,8 @@ function applyFilters(){
         $.makeArray($(".toggle-toggle")).forEach((object, index) => {
             countryIdArray.push($(object).parents()[2].dataset.renderNumber)
         });
-
-        // initiateGraphRender(false, window.location.search, countryIdArray.join());
     } else {
         countryIdArray.length === 0 ? countryIdArray.push(getParam('country_ids')) : null;
-        // countryIdArray.push(getParam('country_ids'));
     }
 
 
