@@ -9,7 +9,6 @@ function returnToHere(x = 0) {
 }
 
 function getParam(key, queryString = '') {
-    
     let pramsArray = queryString.length < 1 ? (window.location.search).substring(1).split("&") : queryString.substring(1).split("&");
     let paramJson = {};
     pramsArray.forEach(pair => {
@@ -20,7 +19,6 @@ function getParam(key, queryString = '') {
 }
 
 function setPageName(){
-
     getParam('page') ? $("#page_name").html(decodeUrlSpaces(getParam('page')) + "<span></span>") + $("#renderArea").html("") : null;
 }
 
@@ -151,11 +149,6 @@ function countryIdsToInt(value) {
 
 function getCount(array){
     return array.sort()[0];
-    // if (Array.isArray(countryIds)) {
-    //     return countryIds.length;
-    // } else {
-    //     return howMany;
-    // }
 }
 
 
