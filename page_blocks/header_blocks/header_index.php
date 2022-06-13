@@ -1,8 +1,5 @@
 <?php
 
-$base = new Base();
-$base->set_site_subtitle('COVID Data Visualized with Relative and Comparative Scales');
-$title_tag = new Tag("title", $base->site_title);
 $site_name = new SiteName();
 $navbar = new Navbar('main');
 $add_file_suffix = date("YmdHis");
