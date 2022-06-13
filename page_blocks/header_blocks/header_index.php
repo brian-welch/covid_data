@@ -1,6 +1,7 @@
 <?php
 
 $site_name = new SiteName();
+$title_tag = new Tag("title", $site_name->get_html());
 $navbar = new Navbar('main');
 $add_file_suffix = date("YmdHis");
 
