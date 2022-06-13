@@ -1,7 +1,6 @@
 <?php
 
 class Image {
-
     // Submitted arguments
     public $src;
     private $attrs;
@@ -15,7 +14,7 @@ class Image {
     }
 
     public function set_attribute($attr, $value) {
-        $this->attrs[$attr] ? $this->attrs[$attr] .= " " . $value : $this->attrs[$attr] = $value;
+        isset($this->attrs[$attr]) ? $this->attrs[$attr] .= " " . $value : $this->attrs[$attr] = $value;
     }
 
     public function get_html() {

@@ -4,17 +4,19 @@ include 'block_one.php';
 include 'block_two.php';
 include 'block_three.php';
 
+$date = GlobalVariables::todaysDate();
+
 $footer = <<<FOOTER
 <div id="footerContainer" class="container">
     <div class="row">
     <!--block_one-->
-    {$block_two}
-    {$block_three}
+    $block_two
+    $block_three
     </div>
     <div class="row">
         <div class="copyright-block">
             <span class="copyleft-span">Copy</span><span class="copyright-span">& Copyright</span>
-            <span class="d-none d-sm-inline"> | </span><span class="d-xs-inline d-sm-none"><br></span> {$base->jS_M_Y}
+            <span class="d-none d-sm-inline"> | </span><span class="d-xs-inline d-sm-none"><br></span> $date
             <span class="d-none d-sm-inline"> | </span><span class="d-xs-inline d-sm-none"><br></span> <a href="https://brianwelch.se/" target="new">Brian Christopher Welch</a>
         </div>
     </div> 
@@ -41,11 +43,11 @@ $footer = <<<FOOTER
             </div>
         </nav>
     </div>
-    <script src="js/after.js?{$add_file_suffix}"></script>
+    <script src="/covid_data/js/after.js?{$add_file_suffix}"></script>
     </body></html>
 
 FOOTER;
 
-new Tag("hr","","",true);
+new Tag("hr","",[],true);
 
 echo $footer;

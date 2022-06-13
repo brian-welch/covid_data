@@ -1,14 +1,8 @@
 <?php
 
-$base = new Base();
-$base->set_site_subtitle('COVID Data Visualized with Relative and Comparative Scales');
-
-$title_tag = new Tag("title", $base->site_title);
-
 $site_name = new SiteName();
-
+$title_tag = new Tag("title", $site_name->get_html());
 $navbar = new Navbar('main');
-
 $add_file_suffix = date("YmdHis");
 
 $block = <<<HEADER
@@ -24,10 +18,10 @@ $block = <<<HEADER
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="css/style.css?{$add_file_suffix}">
+        <link rel="stylesheet" href="/covid_data/css/style.css?{$add_file_suffix}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js" integrity="sha512-b3xr4frvDIeyC3gqR1/iOi6T+m3pLlQyXNuvn5FiRrrKiMUJK3du2QqZbCywH6JxS5EOfW0DY0M6WwdXFbCBLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <script src="js/before.js?{$add_file_suffix}"></script>
+        <script src="/covid_data/js/before.js?{$add_file_suffix}"></script>
     </head>
     <body>
     <div class="navbar-center bg-dark">
@@ -37,12 +31,18 @@ $block = <<<HEADER
                 <div class="container-fluid header">
                     {$site_name->get_html()}
                     <div id="" class="button_container">
+
+                        <button class="navbar-toggler filter-menu-button-outer d-none d-sm-block menuClickable hideMe" type="button">
+                            <a href="/covid_data/usa/">The 'States'</a>
+                        </button>
+
                         <button id="filterMenuButton" class="navbar-toggler filter-menu-button-outer d-none d-sm-block menuClickable hideMe" type="button" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="this.blur()">
                             <span class="filter-menu-button-inner" >
                             <span class="rotate_180"><i class="fas fa-sort-amount-up-alt"></i></span>
                                 <i class="fas fa-sort-amount-up"></i>
                             </span>
                         </button>
+
                         <button class="navbar-toggler hamburger-menu-button-outer d-none d-sm-block menuClickable" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="this.blur()">
                             <span class="hamburger-menu-button-inner" >
                                 <hr><hr><hr>
@@ -78,22 +78,9 @@ $block = <<<HEADER
                     </div>
                     <div id="sortingText"></div>
                     <hr>
-                    <!--<div id="" class="layout-customizer">
-                        <h5>Layout:</h5>
-                        <button class="layout-button" data-col-md="6">
-                            <img src="./images/2_across_01.svg" />
-                        </button>
-                        <button class="layout-button" data-col-md="4">
-                            <img src="./images/3_across_01.svg" />
-                        </button>
-                        <button class="layout-button" data-col-md="3">
-                            <img src="./images/4_across_01.svg" />
-                        </button>
-                    </div>
-                    <hr>-->
                     <div id="" class="">
                         <h5>County Selector:</h5>
-                        <div id="" class="country-filter-thumbnail"><img src="./images/example_graph_01.jpg" /></div>
+                        <div id="" class="country-filter-thumbnail"><img src="/covid_data/images/example_graph_01.jpg" /></div>
                         
                         <div id="" class="country-filter-message hideMe" data-filter-param="country">
                             <span>Coutries Selected: Clicking 'Apply' will filter to only the selected countries</span>
@@ -116,3 +103,4 @@ $block = <<<HEADER
 HEADER;
 
 echo $block;
+

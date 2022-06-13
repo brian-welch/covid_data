@@ -89,7 +89,7 @@ echo <<<LOADING_WHEEL
 <div class="loading-graphs-wheel hideMe">
     <h5 align="center">Loading</h5>
     <div class="loading-graphs-wheel-inner">
-        <img src="./images/linus_the_virus_01.svg"/>
+        <img src="/covid_data/images/linus_the_virus_01.svg"/>
     </div>
     <h5 align="center">Graphs</h5>
 </div>

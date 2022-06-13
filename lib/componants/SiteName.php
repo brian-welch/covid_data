@@ -4,7 +4,7 @@ class SiteName {
 
     private $site_title;
     
-    function __construct ($site_title_ext = "Graphing COVID: 1.5", $attrs = []) {
+    function __construct ($site_title_ext = "Graphing COVID: 2.0", $attrs = []) {
         $this->site_title = $site_title_ext;
         $this->attrs = $attrs;
         $this->set_attribute('class','site-name');
@@ -12,7 +12,7 @@ class SiteName {
     }
     
     public function set_attribute($attr, $value) {
-        array_key_exists($attr, $this->attrs) ? $this->attrs[$attr] .= " " . $value : $this->attrs[$attr] = $value;
+        isset($this->attrs[$attr]) ? $this->attrs[$attr] .= " " . $value : $this->attrs[$attr] = $value;
     }
 
     public function get_html() {
