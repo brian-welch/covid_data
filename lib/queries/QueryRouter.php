@@ -1,6 +1,5 @@
 <?php
-function myLoad($class) {
-    
+function myLoad($class) {    
     foreach(['queries', 'componants', 'elements', 'forms', 'base', 'functions'] as $prefix) {
         if(file_exists("{$_SERVER['DOCUMENT_ROOT']}/covid_data/lib/$prefix/$class.php")) {
             include_once("{$_SERVER['DOCUMENT_ROOT']}/covid_data/lib/$prefix/$class.php");
@@ -8,7 +7,6 @@ function myLoad($class) {
     }
 }
 spl_autoload_register('myLoad');
-//=============================================================================
 
 class Queryrouter {
 
